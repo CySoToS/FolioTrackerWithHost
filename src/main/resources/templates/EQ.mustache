@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Equities</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+<h1>Equity Records</h1>
+<table id="hellos-table" class="table table-hover">
+    <thead>
+    <tr>
+        <th>EPIC</th>
+        <th>Company</th>
+        <th>Asset Type</th>
+        <th>Sector</th>
+        <th>Date Time</th>
+        <th>Mid Price</th>
+        <th>Currency</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#EQUITIES}}
+        <tr>
+            <td>{{epic}}</td>
+            <td>{{companyName}}</td>
+            <td>{{assetType}}</td>
+            <td>{{sector}}</td>
+            <td>{{dateTime}}</td>
+            <td class ="money">£{{price}}</td>
+            <td>{{currency}}</td>
+        </tr>
+    {{/EQUITIES}}
+    </tbody>
+</table>
+</body>
+</html>

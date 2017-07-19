@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+	<script>
+	function transaction(pid, quarter){
+			var selectOption = document.getElementById("benchmarkSelector");
+			var selectedBenchmark = selectOption.options[selectOption.selectedIndex].value;
+			if(selectedBenchmark===" ")
+			{
+				var url ='/PF/'+pid+'/'+quarter+'/transactions';
+			}else{
+				var url ='/PF/'+pid+'/'+quarter+'/transactions/'+selectedBenchmark;
+			}
+			var tab = window.open(url);
+  				 tab.focus();
+		}
+		
+	</script>
+</head>
+<body>
+<h1>Portfolio</h1>
+<table id="portfolio-table" class="table table-hover">
+    <thead>
+    <tr>
+        <th>Portfolio ID</th>
+        <th>Cash</th>
+        <th>Portfolio Value</th>
+        <th>View Transactions</th>
+        <th>Select Benchmark</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#FOLIO}}
+         <tr>
+            <td>{{pid}}</td>
+            <td class ="money">£{{cash}}</td>
+            <td class ="money">£{{portfolioValue}}</td>
+            <td><button onclick="transaction({{pid}},'2015-Q1')">Transaction Quarter1</button>
+            <button onclick="transaction({{pid}},'2015-Q2')">Transaction Quarter2</button></td>
+             <td>
+            	<select id="benchmarkSelector">
+            	  <option value=" "selected="selected">None</option>
+            	  {{#benchmarkNames}}
+            	  	
+            	  	<option value="{{.}}">{{.}}</option>
+            	  {{/benchmarkNames}}
+				  
+				</select>
+			</td>
+        </tr>
+    {{/FOLIO}}
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolios</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+	<script>
+		function quarter1(pid){
+			
+			 var tab = window.open(pid.concat(quarter));
+  				 tab.focus();
+  				 console.log(url);
+			window.location =url;
+		}
+		function quarter(pid,quarter){
+			var url ='/PF/'+pid+'/'+quarter;
+			var tab = window.open(url);
+  				 tab.focus();
+		}
+	</script>
+</head>
+<body>
+<h1>Portfolio Records</h1>
+<table id="portfolio-table" class="table table-hover">
+    <thead>
+    <tr>
+        <th>Portfolio ID</th>
+        <th>Portfolio Name</th>
+        <th>Portfolio Manager</th>
+        <th>Portfolio Cash</th>
+        <th>Portfolio Currency</th>
+        <th>Quarter 1</th>
+        <th>Quarter 2</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#PORTFOLIOS}}
+        <tr>
+            <td>{{pid}}</td>
+            <td>{{name}}</td>
+            <td>{{manager}}</td>
+            <td class ="money">£{{cashq1}}</td>
+            <td>{{currency}}</td>
+            <td><button onclick="quarter({{pid}},'2015-Q1')">Quarter1</button></td>
+            <td><button onclick="quarter({{pid}},'2015-Q2')"> Quarter2</button></td>
+        </tr>
+    {{/PORTFOLIOS}}
+    </tbody>
+</table>
+</body>
+</html>
